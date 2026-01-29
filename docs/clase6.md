@@ -126,7 +126,7 @@ urlpatterns = [
 
 ---
 
-### 🚨 Errores Comunes (Troubleshooting)
+### Errores Comunes (Troubleshooting)
 
 1. **TemplateSyntaxError: Invalid block tag... 'endblock'**
 * *Causa:* Olvidaron poner `{% endblock %}` al final de su contenido en `index.html`.

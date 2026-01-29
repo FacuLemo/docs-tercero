@@ -9,7 +9,7 @@ El flujo ocn el que funciona django, es el siguiente:
 
 ---
 
-### Paso 1: La Vista (El Cocinero)
+### Paso 1: La Vista 
 
 Vamos al archivo `views.py` de tu aplicación (ej. `holamundo/views.py`).
 
@@ -29,7 +29,7 @@ def saludo(request):
 
 ---
 
-### Paso 2: URLs de la App (El mapa local)
+### Paso 2: URLs de la App 
 
 Django no crea un `urls.py` dentro de la app por defecto. Hay que crearlo.
 
@@ -51,7 +51,7 @@ urlpatterns = [
 
 ---
 
-### Paso 3: Conectar al Proyecto (El mapa general)
+### Paso 3: Conectar al Proyecto
 
 Ahora hay que decirle al proyecto principal que incluya las rutas de nuestra app.
 Ir a `urls.py` **de la carpeta del proyecto** (donde está `settings.py`).

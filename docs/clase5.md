@@ -137,7 +137,7 @@ Volvemos al `index.html`. Hay que hacer dos cosas: cargar la librería estática
 
 ---
 
-### 🚨 Errores Comunes (Troubleshooting)
+### Errores Comunes (Troubleshooting)
 
 1. **TemplateSyntaxError:**
 * *Causa:* Se olvidaron de cerrar un bloque (falta `{% endif %}` o `{% endfor %}`).
