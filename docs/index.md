@@ -4,7 +4,7 @@ Soy su docente a cargo Facundo Esteban Lemo. Me pueden contactar en cualquier mo
 
 ## ¿Qué veremos en esta materia?
 
-En esta materia nos enfocaremos en aprender a usar y crear proyectos en el framework de python llamado Python.
+En esta materia nos enfocaremos en aprender a usar y crear proyectos en el framework de python llamado Django.
 
 - Introducción a Django
 - Instalación de Django más comprensión de la estructura
@@ -14,7 +14,7 @@ En esta materia nos enfocaremos en aprender a usar y crear proyectos en el frame
 - Comprensión y uso del panel de administración de Django
 - Creación y utilización de modelos de Django
 - Manejo del ORM de Django
-- API REST con Django
+- API REST con Django-rest-framework
 
 ## En la clase de hoy...
 
