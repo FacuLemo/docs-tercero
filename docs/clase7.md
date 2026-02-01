@@ -5,7 +5,9 @@
 
 ### 1. El Concepto (ORM)
 
-*Analogía rápida:* "No vamos a escribir SQL (SELECT * FROM...). Vamos a escribir clases de Python, y Django se encargará de traducir eso a SQL por nosotros. A esto se le llama ORM."
+No vamos a escribir comandos de SQL; vamos a escribir clases de Python, y Django se encargará de traducir eso a SQL por nosotros. A esto se le llama ORM.
+
+De esta manera vamos a reemplazar comandos como `SELECT * FROM tarea WHERE id=4` por `Tarea.objects.get(id=id)`
 
 ---
 
