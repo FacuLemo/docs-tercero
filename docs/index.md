@@ -19,3 +19,4 @@ En esta materia nos enfocaremos en aprender a usar y crear proyectos en el frame
 ## En la clase de hoy...
 
 En esta primera clase tendremos un pantallazo de qué nos permite hacer este framework, y comprenderemos la estructura de su modelo Model Template View.
+> Encuentren el power point adjunto con la clase grabada.
