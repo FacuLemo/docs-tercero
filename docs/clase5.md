@@ -133,7 +133,7 @@ Volvemos al `index.html`. Hay que hacer dos cosas: cargar la librería estática
 
 ```
 
-> **Tip Docente:** Explica que `{% static 'ruta' %}` es mágico. Django busca esa ruta y genera la URL correcta automáticamente, sin importar si estamos en local o en un servidor real.
+> Cuando se usa `{% static 'ruta' %}` Django busca esa ruta y genera la URL correcta automáticamente, sin importar si estamos en local o en un servidor real.
 
 ---
 

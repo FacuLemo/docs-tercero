@@ -4,7 +4,7 @@
 ###  El Flujo de Django
 Ahora empezaremos a crear nuestras propias pantallas en Django. Deberemos crear una vista con su respectiva lógica deseada y registrar esa vista en un endpoint en `urls.py`.
 
-El flujo ocn el que funciona django, es el siguiente:
+El flujo conn el que funciona django, es el siguiente:
 `Usuario (Navegador)` -> `urls.py` (interpreta la url) -> `views.py` (Ejecula la lógica y retorna) -> `Respuesta`
 
 ---
