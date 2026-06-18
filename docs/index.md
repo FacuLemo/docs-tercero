@@ -10,7 +10,7 @@ En esta materia nos enfocaremos en aprender a usar y crear proyectos en el frame
 - Instalación de Django más comprensión de la estructura
 - Creación de proyectos con Django
 - Funcionalidad de vistas y templates
-- Utilización del motor de Jinja2 en templates
+- Utilización del motor de Django para templates
 - Comprensión y uso del panel de administración de Django
 - Creación y utilización de modelos de Django
 - Manejo del ORM de Django

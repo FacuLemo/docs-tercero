@@ -88,7 +88,7 @@ def saludo(request):
 ---
 
 
-### Errores Comunes (Troubleshooting)
+### Errores Comunes
 
 1. **TemplateDoesNotExist:**
 * *Causa:* Escribieron mal la ruta en el `render`.
@@ -98,6 +98,3 @@ def saludo(request):
 
 2. **No aparece el nombre (sale vacío):**
 * *Causa:* La clave del diccionario en `views.py` no coincide *exactamente* con lo que pusieron entre `{{ }}` en el HTML. (Ej: `nombre` vs `nombre_usuario`).
-
-
----

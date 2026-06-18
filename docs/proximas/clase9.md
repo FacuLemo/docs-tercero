@@ -144,3 +144,5 @@ Para que sea fácil llegar, ponemos un enlace en la página principal.
 
 
 ---
+
+  <a href="{% url 'admin:index' %}">Panel Admin</a>

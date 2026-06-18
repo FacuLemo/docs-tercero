@@ -139,19 +139,3 @@ urlpatterns = [
 3. **ReverseMatch at /...**
 * *Causa:* En el menú pusieron `{% url 'contacto' %}` pero no definieron ningún `path(..., name='contacto')` en `urls.py`. Django explota si intentas linkear a algo que no existe.
 
-
-
----
-
-### ¿Próximo paso?
-
-Con esto tienen la estructura frontend lista. El proyecto ya parece un sitio real.
-Para la siguiente clase (la 4ª interacción), ahora sí recomendaría **Modelos y Base de Datos**.
-
-El flujo sería:
-
-1. "Nos cansamos de escribir las tareas en una lista de Python en `views.py`".
-2. Crear el Modelo `Tarea`.
-3. Migraciones.
-4. Usar el **Admin** para crear tareas reales.
-5. Mostrar esas tareas de la BD en el template.

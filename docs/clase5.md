@@ -1,6 +1,6 @@
 
 
-# Clase 5: Lógica (Bucles/Condicionales) con Jinja2 y Estilos 
+# Clase 5: Lógica (Bucles/Condicionales) con Django Template Language y Estilos 
 
 **Objetivo de la clase:**
 
@@ -153,16 +153,3 @@ Volvemos al `index.html`. Hay que hacer dos cosas: cargar la librería estática
 3. **No se ve nada en la lista:**
 * *Causa:* La lista en `views.py` está vacía o la variable `tiene_tareas` es `False`.
 
-
-
----
-
-### Resumen del Flujo de la Clase
-
-1. Modificar `views.py` agregando una lista.
-2. Modificar `index.html` usando `{% for %}`. **(Probar aquí)**.
-3. Modificar `views.py` agregando booleano y `index.html` con `{% if %}`. **(Probar aquí)**.
-4. Crear estructura `static` y archivo `.css`.
-5. Cargar estáticos en el HTML. **(Resultado final)**.
-
-¿Te parece bien esta estructura? Si la clase es muy larga, puedes dejar la parte de CSS para la siguiente y enfocarte bien en el `for` y `if`.

@@ -1,0 +1,391 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Syne', sans-serif; }
+  .sheet { padding: 1.5rem 1rem; max-width: 900px; margin: 0 auto; }
+  .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-border-primary); padding-bottom: 1rem; }
+  .header h1 { font-size: 22px; font-weight: 700; color: var(--color-text-primary); }
+  .header .badge { font-size: 11px; font-weight: 600; background: #185FA5; color: #E6F1FB; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.05em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; overflow: hidden; }
+  .card-header { padding: 8px 14px; display: flex; align-items: center; gap: 8px; }
+  .card-header .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .card-header h2 { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .card-body { padding: 0 10px 10px; }
+  .entry { margin-bottom: 10px; }
+  .entry:last-child { margin-bottom: 0; }
+  .label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 3px; padding: 0 4px; }
+  pre { background: var(--color-background-tertiary); border-radius: 7px; padding: 8px 10px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.6; overflow-x: auto; color: var(--color-text-primary); border: 0.5px solid var(--color-border-tertiary); }
+  .kw { color: #185FA5; font-weight: 500; }
+  .fn { color: #0F6E56; font-weight: 500; }
+  .str { color: #853A00; }
+  .cm { color: var(--color-text-tertiary); font-style: italic; }
+  .num { color: #993556; }
+  .tip { font-size: 11px; background: var(--color-background-info); color: var(--color-text-info); border-radius: 6px; padding: 5px 9px; margin-top: 4px; line-height: 1.4; }
+  .warn { font-size: 11px; background: var(--color-background-warning); color: var(--color-text-warning); border-radius: 6px; padding: 5px 9px; margin-top: 4px; line-height: 1.4; }
+
+  .blue .card-header  { background: #E6F1FB; }
+  .blue .dot          { background: #185FA5; }
+  .blue h2            { color: #0C447C; }
+  .green .card-header { background: #EAF3DE; }
+  .green .dot         { background: #3B6D11; }
+  .green h2           { color: #27500A; }
+  .teal .card-header  { background: #E1F5EE; }
+  .teal .dot          { background: #0F6E56; }
+  .teal h2            { color: #085041; }
+  .amber .card-header { background: #FAEEDA; }
+  .amber .dot         { background: #854F0B; }
+  .amber h2           { color: #633806; }
+  .coral .card-header { background: #FAECE7; }
+  .coral .dot         { background: #993C1D; }
+  .coral h2           { color: #712B13; }
+  .purple .card-header{ background: #EEEDFE; }
+  .purple .dot        { background: #534AB7; }
+  .purple h2          { color: #3C3489; }
+  .pink .card-header  { background: #FBEAF0; }
+  .pink .dot          { background: #993556; }
+  .pink h2            { color: #72243E; }
+  .red .card-header   { background: #FCEBEB; }
+  .red .dot           { background: #A32D2D; }
+  .red h2             { color: #791F1F; }
+
+  @media (prefers-color-scheme: dark) {
+    .blue .card-header  { background: #0C447C; } .blue h2  { color: #B5D4F4; }
+    .green .card-header { background: #27500A; } .green h2 { color: #C0DD97; }
+    .teal .card-header  { background: #085041; } .teal h2  { color: #9FE1CB; }
+    .amber .card-header { background: #633806; } .amber h2 { color: #FAC775; }
+    .coral .card-header { background: #712B13; } .coral h2 { color: #F5C4B3; }
+    .purple .card-header{ background: #3C3489; } .purple h2{ color: #CECBF6; }
+    .pink .card-header  { background: #72243E; } .pink h2  { color: #F4C0D1; }
+    .red .card-header   { background: #791F1F; } .red h2   { color: #F7C1C1; }
+    .kw  { color: #85B7EB; }
+    .fn  { color: #5DCAA5; }
+    .str { color: #FAC775; }
+    .num { color: #ED93B1; }
+  }
+</style>
+
+<div class="sheet">
+  <div class="header">
+    <h1>Django ORM — Cheatsheet</h1>
+    <span class="badge">db manipulation</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- CONSULTAS BÁSICAS -->
+    <div class="card blue">
+      <div class="card-header"><div class="dot"></div><h2>Consultas básicas</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Todos los registros</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">all</span>()</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Filtrar</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(status=<span class="str">'pub'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Excluir</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">exclude</span>(status=<span class="str">'draft'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Obtener uno (lanza excepción si no existe)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">get</span>(id=<span class="num">1</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Primero / Último</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">first</span>()
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">last</span>()</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIELD LOOKUPS -->
+    <div class="card teal">
+      <div class="card-header"><div class="dot"></div><h2>Field lookups</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <pre><span class="cm"># exact (default)</span>
+<span class="fn">filter</span>(name=<span class="str">'Ana'</span>)
+<span class="cm"># contiene (case-insensitive)</span>
+<span class="fn">filter</span>(name__icontains=<span class="str">'ana'</span>)
+<span class="cm"># comparaciones</span>
+<span class="fn">filter</span>(age__gte=<span class="num">18</span>)
+<span class="fn">filter</span>(age__lt=<span class="num">30</span>)
+<span class="fn">filter</span>(age__range=(<span class="num">18</span>, <span class="num">65</span>))
+<span class="cm"># fechas</span>
+<span class="fn">filter</span>(created__year=<span class="num">2024</span>)
+<span class="fn">filter</span>(created__date=date.today())
+<span class="cm"># nulos</span>
+<span class="fn">filter</span>(deleted_at__isnull=<span class="kw">True</span>)
+<span class="cm"># lista</span>
+<span class="fn">filter</span>(status__in=[<span class="str">'a'</span>,<span class="str">'b'</span>])</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREAR Y GUARDAR -->
+    <div class="card green">
+      <div class="card-header"><div class="dot"></div><h2>Crear y guardar</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Crear + guardar en un paso</div>
+          <pre>p = <span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">create</span>(
+    title=<span class="str">'Hola Django'</span>,
+    status=<span class="str">'draft'</span>
+)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Instanciar y luego guardar</div>
+          <pre>p = <span class="fn">Post</span>(title=<span class="str">'Hola'</span>)
+p.status = <span class="str">'pub'</span>
+p.<span class="fn">save</span>()</pre>
+        </div>
+        <div class="entry">
+          <div class="label">get_or_create</div>
+          <pre>obj, created = <span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">get_or_create</span>(
+    slug=<span class="str">'mi-post'</span>,
+    defaults={<span class="str">'title'</span>: <span class="str">'Mi post'</span>}
+)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">update_or_create</div>
+          <pre>obj, created = <span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">update_or_create</span>(
+    slug=<span class="str">'mi-post'</span>,
+    defaults={<span class="str">'title'</span>: <span class="str">'Nuevo'</span>}
+)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTUALIZAR -->
+    <div class="card amber">
+      <div class="card-header"><div class="dot"></div><h2>Actualizar</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Un objeto</div>
+          <pre>p = <span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">get</span>(id=<span class="num">1</span>)
+p.title = <span class="str">'Nuevo título'</span>
+p.<span class="fn">save</span>()</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Solo ciertos campos (eficiente)</div>
+          <pre>p.<span class="fn">save</span>(update_fields=[<span class="str">'title'</span>])</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Bulk update (una sola query)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    status=<span class="str">'draft'</span>
+).<span class="fn">update</span>(status=<span class="str">'pub'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Incrementos atómicos (F expressions)</div>
+          <pre><span class="kw">from</span> django.db.models <span class="kw">import</span> F
+
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(id=<span class="num">1</span>).<span class="fn">update</span>(
+    views=F(<span class="str">'views'</span>) + <span class="num">1</span>
+)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIMINAR -->
+    <div class="card red">
+      <div class="card-header"><div class="dot"></div><h2>Eliminar</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Un objeto</div>
+          <pre>p = <span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">get</span>(id=<span class="num">1</span>)
+p.<span class="fn">delete</span>()</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Bulk delete</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    status=<span class="str">'draft'</span>
+).<span class="fn">delete</span>()</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Todos los registros</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">all</span>().<span class="fn">delete</span>()</pre>
+        </div>
+        <div class="warn">⚠ <strong>delete()</strong> en queryset es irreversible y no dispara señales por objeto. Usarlo con cuidado.</div>
+      </div>
+    </div>
+
+    <!-- ORDENAR Y LIMITAR -->
+    <div class="card purple">
+      <div class="card-header"><div class="dot"></div><h2>Ordenar y limitar</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Ordenar ASC / DESC</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">order_by</span>(<span class="str">'created'</span>)
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">order_by</span>(<span class="str">'-created'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Slicing (LIMIT / OFFSET)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">all</span>()[:<span class="num">10</span>]      <span class="cm"># LIMIT 10</span>
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">all</span>()[<span class="num">10</span>:<span class="num">20</span>]   <span class="cm"># OFFSET 10</span></pre>
+        </div>
+        <div class="entry">
+          <div class="label">Conteo y existencia</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(status=<span class="str">'pub'</span>).<span class="fn">count</span>()
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(id=<span class="num">1</span>).<span class="fn">exists</span>()</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELACIONES -->
+    <div class="card coral">
+      <div class="card-header"><div class="dot"></div><h2>Relaciones</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">ForeignKey — hacia adelante</div>
+          <pre>post.author          <span class="cm"># objeto Author</span>
+post.author.email</pre>
+        </div>
+        <div class="entry">
+          <div class="label">ForeignKey — reversa</div>
+          <pre>author.post_set.<span class="fn">all</span>()
+author.posts.<span class="fn">filter</span>(status=<span class="str">'pub'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Filtro cruzando relaciones</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    author__email=<span class="str">'x@x.com'</span>
+)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">select_related (JOIN, FK/OneToOne)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">select_related</span>(<span class="str">'author'</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">prefetch_related (ManyToMany / reversa)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">prefetch_related</span>(<span class="str">'tags'</span>)</pre>
+        </div>
+        <div class="tip">💡 Siempre usá <strong>select_related</strong> / <strong>prefetch_related</strong> para evitar el problema N+1.</div>
+      </div>
+    </div>
+
+    <!-- AGREGACIONES -->
+    <div class="card pink">
+      <div class="card-header"><div class="dot"></div><h2>Agregaciones y anotaciones</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">aggregate — resultado único</div>
+          <pre><span class="kw">from</span> django.db.models <span class="kw">import</span> Avg, Count, Max, Min, Sum
+
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">aggregate</span>(
+    total=<span class="fn">Count</span>(<span class="str">'id'</span>),
+    promedio=<span class="fn">Avg</span>(<span class="str">'views'</span>)
+)
+<span class="cm"># → {'total': 42, 'promedio': 130.5}</span></pre>
+        </div>
+        <div class="entry">
+          <div class="label">annotate — por fila</div>
+          <pre><span class="fn">Author</span>.<span class="kw">objects</span>.<span class="fn">annotate</span>(
+    num_posts=<span class="fn">Count</span>(<span class="str">'post'</span>)
+).<span class="fn">order_by</span>(<span class="str">'-num_posts'</span>)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q OBJECTS -->
+    <div class="card blue">
+      <div class="card-header"><div class="dot"></div><h2>Q objects — OR / AND / NOT</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <pre><span class="kw">from</span> django.db.models <span class="kw">import</span> Q
+
+<span class="cm"># OR</span>
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    Q(status=<span class="str">'pub'</span>) | Q(featured=<span class="kw">True</span>)
+)
+
+<span class="cm"># AND explícito</span>
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    Q(status=<span class="str">'pub'</span>) &amp; Q(views__gte=<span class="num">100</span>)
+)
+
+<span class="cm"># NOT</span>
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(
+    ~Q(status=<span class="str">'draft'</span>)
+)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUES Y VALORES PLANOS -->
+    <div class="card teal">
+      <div class="card-header"><div class="dot"></div><h2>values y values_list</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Diccionarios (menos memoria)</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">values</span>(<span class="str">'id'</span>, <span class="str">'title'</span>)
+<span class="cm"># → [{'id':1,'title':'...'}, ...]</span></pre>
+        </div>
+        <div class="entry">
+          <div class="label">Tuplas</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">values_list</span>(<span class="str">'id'</span>, <span class="str">'title'</span>)
+<span class="cm"># → [(1, '...'), ...]</span></pre>
+        </div>
+        <div class="entry">
+          <div class="label">Lista plana de un campo</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">values_list</span>(
+    <span class="str">'id'</span>, flat=<span class="kw">True</span>
+)
+<span class="cm"># → [1, 2, 3, ...]</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- BULK OPERATIONS -->
+    <div class="card green">
+      <div class="card-header"><div class="dot"></div><h2>Operaciones bulk</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Crear muchos en una query</div>
+          <pre><span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">bulk_create</span>([
+    <span class="fn">Post</span>(title=<span class="str">'A'</span>),
+    <span class="fn">Post</span>(title=<span class="str">'B'</span>),
+    <span class="fn">Post</span>(title=<span class="str">'C'</span>),
+], batch_size=<span class="num">100</span>)</pre>
+        </div>
+        <div class="entry">
+          <div class="label">Actualizar muchos en una query</div>
+          <pre>posts = <span class="fn">list</span>(<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">filter</span>(...))
+<span class="kw">for</span> p <span class="kw">in</span> posts:
+    p.status = <span class="str">'pub'</span>
+
+<span class="fn">Post</span>.<span class="kw">objects</span>.<span class="fn">bulk_update</span>(
+    posts, [<span class="str">'status'</span>], batch_size=<span class="num">100</span>
+)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSACCIONES -->
+    <div class="card amber">
+      <div class="card-header"><div class="dot"></div><h2>Transacciones</h2></div>
+      <div class="card-body">
+        <div class="entry">
+          <div class="label">Context manager</div>
+          <pre><span class="kw">from</span> django.db <span class="kw">import</span> transaction
+
+<span class="kw">with</span> transaction.<span class="fn">atomic</span>():
+    cuenta.<span class="fn">save</span>()
+    movimiento.<span class="fn">save</span>()
+    <span class="cm"># si falla → rollback</span></pre>
+        </div>
+        <div class="entry">
+          <div class="label">Decorador</div>
+          <pre>@transaction.<span class="fn">atomic</span>
+<span class="kw">def</span> <span class="fn">transferir</span>(origen, destino, monto):
+    ...</pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
