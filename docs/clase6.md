@@ -32,7 +32,7 @@ Este archivo tendrá el diseño común de todo el sitio.
 
     <hr>
     <footer>
-        <p>Copyright © 2024 - Clase de Django</p>
+        <p>Fin de la página</p>
     </footer>
 
 </body>
@@ -41,7 +41,7 @@ Este archivo tendrá el diseño común de todo el sitio.
 ```
 
 > **Concepto Clave (Bloques):**
-> Explica que `{% block nombre %}` ... `{% endblock %}` son "ventanas" o "huecos" que las plantillas hijas podrán rellenar. Todo lo que esté FUERA de los bloques es fijo e inamovible.
+> `{% block nombre %}` ... `{% endblock %}` son "ventanas" o "huecos" que las plantillas hijas podrán rellenar. Todo lo que esté FUERA de los bloques es fijo e inamovible.
 
 ---
 
@@ -99,7 +99,6 @@ urlpatterns = [
 
 ```
 
-> **Tip Docente:** Recálcales la importancia del `name='acerca'`. Es el nombre interno que usamos en el template (`{% url 'acerca' %}`). Si cambian la ruta `'acerca/'` por `'sobre-mi/'` en el futuro, el enlace seguirá funcionando automáticamente.
 
 **3.3. El Template (`acerca.html`)**
 *Archivo: `holamundo/templates/holamundo/acerca.html*`
@@ -121,12 +120,12 @@ urlpatterns = [
 
 ### 4. Práctica en Vivo
 
-1. Pídeles que naveguen a `/hola/` y luego hagan clic en "Acerca de".
+1. Naveguen a `/hola/` y luego hagan clic en "Acerca de".
 2. Deberían ver cómo el contenido central cambia, pero el menú y el footer se mantienen idénticos sin haberlos copiado.
 
 ---
 
-### Errores Comunes (Troubleshooting)
+### Errores Comunes
 
 1. **TemplateSyntaxError: Invalid block tag... 'endblock'**
 * *Causa:* Olvidaron poner `{% endblock %}` al final de su contenido en `index.html`.

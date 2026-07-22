@@ -1,18 +1,17 @@
 Los **filtros en el sistema de plantillas de Django** son herramientas que permiten **transformar o formatear datos directamente en el HTML**, sin necesidad de escribir lógica compleja en la vista.
 
 ---
+Django template language
+para mejorar la escalabilidad del sistema, usamos url:
+```django
+{% url 'home' %}
+```
 
-# 🧩 ¿Qué es un filtro en Django?
+# ¿Qué es un filtro en Django Template Language?
 
 Un filtro es una función que se aplica a una variable dentro de una plantilla usando el operador `|`.
 
 ### Sintaxis básica:
-
-```django
-{{ variable|filtro }}
-```
-
-También pueden recibir argumentos:
 
 ```django
 {{ variable|filtro:argumento }}
@@ -26,7 +25,7 @@ También pueden recibir argumentos:
 2. El template muestra esos datos.
 3. Los filtros modifican esos datos antes de renderizarlos.
 
-👉 Ejemplo simple:
+Ejemplo simple:
 
 ```python
 # views.py
@@ -47,34 +46,27 @@ JUAN
 
 ---
 
-# Más filtros 
+# Los filtros más útiles
 
-## 1. 🔠 Formateo de texto
+## 1. texto y str
 
-### `upper` y `lower`
+### `upper`, `lower` y `title`
 
 ```django
 {{ "hola"|upper }}   → HOLA
 {{ "HOLA"|lower }}   → hola
-```
-
-### `title`
-
-```django
 {{ "juan perez"|title }} → Juan Perez
 ```
 
----
+### `linebreaks`
 
-### linebreaks
+Convierte saltos de línea en `<p>` y `<br>`:
 
-Convierte saltos de línea en <p> y <br>:
 ```
 {{ texto|linebreaks }}
 ```
-Ideal para textos largos guardados en la DB.
 
-## 2. ✂️ Manipulación de strings
+Ideal para textos largos guardados en la DB.
 
 ### `cut`
 
@@ -94,13 +86,7 @@ Recorta texto:
 
 ---
 
-## 3. 🔢 Números
-
-### `add`
-
-```django
-{{ 5|add:3 }} → 8
-```
+## 2. Números
 
 ### floatformat
 ```
@@ -109,23 +95,17 @@ Recorta texto:
 
 ---
 
-## 4. 📅 Fechas
+## 3. Fechas
 
 ### `date`
 
 ```django
-{{ fecha|date:"d/m/Y" }}
-```
-
-Resultado:
-
-```
-22/04/2026
+{{ fecha|date:"d/m/Y" }} → 22/04/2026
 ```
 
 ---
 
-## 5. 📦 Listas
+## 4. Listas
 
 ### `length`
 
@@ -133,15 +113,9 @@ Resultado:
 {{ lista|length }}
 ```
 
-### `join`
-
-```django
-{{ lista|join:", " }}
-```
-
 ---
 
-## 7. 🔄 Valores por defecto
+## 7. Valores por defecto
 
 ### `default`
 
@@ -151,56 +125,13 @@ Resultado:
 
 ---
 
-# 🔗 Encadenar filtros
+#  Encadenar filtros
 
 Puedes usar varios filtros seguidos:
 
 ```django
 {{ nombre|lower|title }}
 ```
-
----
-
-# 🧠 Crear filtros personalizados
-
-Si los filtros existentes no alcanzan, puedes crear los tuyos.
-
-### Paso 1: Crear archivo
-
-```
-app/
- └── templatetags/
-      └── custom_filters.py
-```
-
-### Paso 2: Definir filtro
-
-```python
-from django import template
-
-register = template.Library()
-
-@register.filter
-def multiplicar(valor, arg):
-    return valor * arg
-```
-
-### Paso 3: Usarlo en template
-
-```django
-{% load custom_filters %}
-
-{{ 5|multiplicar:3 }}  → 15
-```
-
----
-
-# 🚨 Buenas prácticas
-
-* ❌ No pongas lógica compleja en templates
-* ✅ Usa filtros solo para presentación
-* ✅ Mantén el código limpio y legible
-* ❌ No abuses de `safe` (riesgo XSS)
 
 ---
 
@@ -211,3 +142,4 @@ def multiplicar(valor, arg):
 * Pueden recibir argumentos
 * Se pueden encadenar
 * Puedes crear filtros personalizados
+

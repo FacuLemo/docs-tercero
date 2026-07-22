@@ -1,5 +1,3 @@
-
-
 # Clase 5: Lógica (Bucles/Condicionales) con Django Template Language y Estilos 
 
 **Objetivo de la clase:**
@@ -32,7 +30,6 @@ def saludo(request):
 
 ```
 
-> **Tip Docente:** Explica que el diccionario de contexto puede llevar cualquier cosa: listas, números, otros diccionarios, objetos, etc.
 
 ---
 
@@ -137,13 +134,13 @@ Volvemos al `index.html`. Hay que hacer dos cosas: cargar la librería estática
 
 ---
 
-### Errores Comunes (Troubleshooting)
+### Errores Comunes 
 
 1. **TemplateSyntaxError:**
 * *Causa:* Se olvidaron de cerrar un bloque (falta `{% endif %}` o `{% endfor %}`).
 
 
-2. **El CSS no carga (pantalla sigue fea):**
+2. **El CSS no carga:**
 * *Causa 1:* No pusieron `{% load static %}` en la **primera línea** del HTML.
 * *Causa 2:* El navegador guardó caché. Intentar `Ctrl + F5`.
 * *Causa 3:* Crearon la carpeta `static` *mientras* el servidor corría.

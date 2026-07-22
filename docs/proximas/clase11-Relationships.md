@@ -5,7 +5,7 @@ Tarea
 ```python
 from django.contrib.auth.models import User
 
-class tarea(Models.Model)
+class tarea(Models.Model):
     titulo = models.CharField(max_length=100)
     responsable = models.ForeignKey(User, on_delete=models.CASCADE, related_name="responsable")
     terminada = models.BooleanField(
@@ -18,10 +18,14 @@ class tarea(Models.Model)
 ```python
 from django.contrib.auth.models import User
 
-class Etiqueta(Models.Model)
+class Etiqueta(Models.Model):
     nombre = models.CharField(max_length=100)
 
-class tarea(Models.Model)
+class Estado(Models.Model):
+    #Completada, en progreso, backlog
+    nombre = models.CharField(max_length=100)
+
+class tarea(Models.Model):
     titulo = models.CharField(max_length=100)
     nombre = models.ManyToManyField(Etiqueta, blank=True)
    
