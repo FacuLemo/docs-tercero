@@ -1,6 +1,3 @@
-Esta es una estructura pedagógica diseñada para que puedas llevarla directamente al aula y explicar la transición a la clase de forma progresiva, enfocándote en la arquitectura MVT que ya manejan.
-
----
 
 ## Plan de Clase: Migración de CRUD a Class-Based Views (CBV)
 

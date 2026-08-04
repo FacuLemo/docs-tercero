@@ -1,8 +1,4 @@
-Entendido. Transformemos la estructura teórica en un **laboratorio práctico paso a paso**. Esta es la guía exacta que puedes entregar a tus alumnos o proyectar en la pantalla para construir la internacionalización desde cero en un proyecto real.
 
-Antes de empezar, recuérdales a tus alumnos que **necesitan tener instalado GNU gettext** en su sistema operativo para que los comandos de terminal funcionen (en Linux/Mac es sencillo con `apt-get install gettext` o `brew install gettext`; en Windows requiere instalar los binarios manualmente).
-
----
 
 ## Paso 1: Configurar el motor en `settings.py`
 
@@ -199,5 +195,5 @@ python manage.py runserver
 
 
 
-**¡Prueba de fuego!**
+**¡Listo!**
 Ve a tu navegador e ingresa a `http://127.0.0.1:8000/es/`. Deberías ver la página completamente traducida al español. Si cambias la URL a `/en/`, volverá al idioma original (inglés).

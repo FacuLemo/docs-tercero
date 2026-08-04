@@ -4,7 +4,6 @@ En términos sencillos: son funciones de Python que se ejecutan antes de renderi
 
 Imagina que tienes una barra de navegación que muestra el nombre del usuario, el año actual en el pie de página, o las categorías de tu tienda online. En lugar de tener que pasar esas variables desde *todas* y cada una de tus vistas (views), un context processor lo hace automáticamente de fondo.
 
-Aquí tienes la clase paso a paso para implementar uno desde cero. Vamos a crear un procesador que inyecte el "Año Actual" y un "Mensaje de Bienvenida" en todas las páginas.
 
 > **Nota importante sobre rendimiento:** Debido a que esta función se ejecuta en *cada* petición (cada vez que alguien carga una página), debes evitar hacer cálculos pesados o consultas complejas a la base de datos dentro de un context processor, ya que podría ralentizar todo tu sitio web.
 

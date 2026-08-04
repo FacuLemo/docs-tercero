@@ -33,7 +33,7 @@ def crear_videojuego(request):
 
 ```
 
-*Nota didáctica: El permiso se estructura como `nombre_app.accion_modelo`. Django los crea automáticamente al hacer migraciones (add, change, delete, view).*
+*Nota: El permiso se estructura como `nombre_app.accion_modelo`. Django los crea automáticamente al hacer migraciones (add, change, delete, view).*
 
 ---
 

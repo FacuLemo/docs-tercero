@@ -76,7 +76,6 @@ def registrar_usuario(request):
         form = RegistroUsuarioForm(request.POST, request.FILES) # request.FILES es vital para el avatar
         if form.is_valid():
             form.save()
-            messages.success(request, '¡Cuenta creada con éxito! Ya puedes iniciar sesión.')
             return redirect('login')
     else:
         form = RegistroUsuarioForm()

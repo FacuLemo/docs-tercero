@@ -108,9 +108,8 @@ Ya pueden entrar y salir, pero necesitan poder crear cuentas nuevas sin entrar a
 
 ### ⚠️ Puntos de fricción comunes en esta clase
 
-1.  **"Profe, hice el login pero me tira un error de *TemplateDoesNotExist*":** Es el error número uno. Pasa porque crean el `login.html` en la carpeta de templates de su app, en lugar de crear la subcarpeta exacta `registration/login.html`.
+1.  **"Hice el login pero me tira un error de *TemplateDoesNotExist*":** Es el error número uno. Pasa porque crean el `login.html` en la carpeta de templates de su app, en lugar de crear la subcarpeta exacta `registration/login.html`.
 2.  **"El botón de Logout me da error 405 (Method Not Allowed)":** A partir de Django 5.0, la vista de Logout solo acepta peticiones POST por motivos de seguridad. Si tus alumnos están usando un simple `<a href="{% url 'logout' %}">` (que es una petición GET), les fallará. Tendrán que usar un pequeño formulario con un botón para hacer el logout.
 3.  **Confusión entre `request.user` y el modelo de su base de datos:** A veces piensan que al crear un usuario automáticamente se asocia con los datos del CRUD.
 
-¿Preferís que para la parte de registro y login enfoquemos el código usando Vistas Basadas en Clases (Class-Based Views) para ahorrar aún más código, o seguimos manteniendo Vistas Basadas en Funciones como venían trabajando en el CRUD?
 ```
