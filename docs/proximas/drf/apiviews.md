@@ -216,35 +216,20 @@ urlpatterns = [
 | **Flexibilidad** | Máxima (Lógica customizada) | Alta (Personalización de negocio) | Alta para CRUDs tradicionales |
 | **Caso de Uso Ideal** | Endpoints de procesamiento, APIs externas o lógica compleja | Comportamientos CRUD no estándar | APIs REST convencionales asociadas a modelos |
 
----
 
-### Paso 6: Ejercicio Práctico Guiado y Desafío para la Clase
+---------
 
-#### Consigna:
-
-Dado un modelo `Categoria` con los campos `nombre` (CharField) y `descripcion` (TextField):
-
-1. Crea un serializador `CategoriaSerializer` basado en `ModelSerializer`.
-2. Implementa `CategoriaListCreateView` heredando de la vista genérica concreta adecuada.
-3. Sobrescribe el método `get_queryset()` para permitir filtrar las categorías cuyo nombre contenga un término enviado por parámetro URL (ej. `/api/categorias/?search=electronica`).
-4. Configura el archivo `urls.py` correspondientemente.
-
-#### Solución sugerida para mostrar al finalizar:
+Para mostrar anidamientos usando 2 serializers:
 
 ```python
-# views.py
-from rest_framework import generics
-from .models import Categoria
-from .serializers import CategoriaSerializer
 
-class CategoriaListCreateView(generics.ListCreateAPIView):
-    serializer_class = CategoriaSerializer
+class ProductoListCreateView(generics.ListCreateAPIView):
+    queryset = Producto.objects.select_related('categoria') 
 
-    def get_queryset(self):
-        queryset = Categoria.objects.all()
-        search_query = self.request.query_params.get('search', None)
-        if search_query:
-            queryset = queryset.filter(nombre__icontains=search_query)
-        return queryset
-
+    def get_serializer_class(self):
+        # Si es GET (listar), usamos el serializador anidado
+        if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
+            return ProductoReadSerializer
+        # Si es POST (crear), usamos el serializador que recibe el ID
+        return ProductoWriteSerializer
 ```
